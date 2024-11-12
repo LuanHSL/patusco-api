@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [UserController::class, 'login']);
 
 Route::middleware(['isReceptionist'])->group(function () {
-    // TODO implement receptionist routes
+    Route::get('/user/doctors', [UserController::class, 'getDoctors']);
 });
 
 Route::middleware(['isDoctor'])->group(function () {
