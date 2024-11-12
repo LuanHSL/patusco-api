@@ -91,4 +91,13 @@ abstract class CoreRepository implements ICoreRepository
     $this->query->with($relationships);
     return $this;
   }
+
+  public function existsOrThrow(): bool
+  {
+    try {
+      return $this->query->exists();
+    } catch (Exception $exception) {
+      throw new DataBaseException('Error getting data');
+    }
+  }
 }

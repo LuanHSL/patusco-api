@@ -15,4 +15,5 @@ interface ICoreRepository
   public function updateOrThrow(int $id, Model $model): Model;
   public function deleteOrThrow(): void;
   public function setWith(array $relationships): ICoreRepository;
+  public function existsOrThrow(): bool;
 }

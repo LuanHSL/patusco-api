@@ -67,4 +67,12 @@ class AppointmentService
       ->setWhereId($id)
       ->deleteOrThrow();
   }
+
+  public function isAppointmentForUser(int $appointmentId, int $userId): bool
+  {
+    return $this->repository
+      ->setWhereId($appointmentId)
+      ->setWhereUserId($userId)
+      ->existsOrThrow();
+  }
 }

@@ -20,5 +20,8 @@ Route::middleware(['isReceptionist'])->group(function () {
 });
 
 Route::middleware(['isDoctor'])->group(function () {
-    Route::get('/appointment/getByUser', [AppointmentController::class, 'getByUser']);
+    Route::group(['prefix' => 'appointment'], function () {
+        Route::get('/getByUser', [AppointmentController::class, 'getByUser']);
+        Route::put('/{id}/updateByUser', [AppointmentController::class, 'updateByUser']);
+    });
 });
