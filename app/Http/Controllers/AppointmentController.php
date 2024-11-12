@@ -17,6 +17,7 @@ class AppointmentController extends Controller
     public function store(CreateAppointmentRequest $request)
     {
         $appointment = new AppointmentDto(
+            id: null,
             name: $request->name,
             email: $request->email,
             animalName: $request->animalName,
@@ -25,7 +26,8 @@ class AppointmentController extends Controller
             prognostic: $request->prognostic,
             period: $request->period,
             date: new Carbon($request->date),
-            userId: $request->userId  
+            userId: $request->userId,
+            user: null
         );
 
         $this->appointmentService->create($appointment);
@@ -36,6 +38,7 @@ class AppointmentController extends Controller
     public function update(CreateAppointmentRequest $request, int $id)
     {
         $appointment = new AppointmentDto(
+            id: null,
             name: $request->name,
             email: $request->email,
             animalName: $request->animalName,
@@ -44,11 +47,18 @@ class AppointmentController extends Controller
             prognostic: $request->prognostic,
             period: $request->period,
             date: new Carbon($request->date),
-            userId: $request->userId  
+            userId: $request->userId,
+            user: null
         );
 
         $this->appointmentService->update($appointment, $id);
 
         return response()->json(['message' => 'Appointment updated successfully'], 200);
+    }
+
+    public function index()
+    {
+        $appointments = $this->appointmentService->getAll();
+        return response()->json($appointments);
     }
 }

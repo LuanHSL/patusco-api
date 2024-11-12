@@ -13,6 +13,7 @@ Route::middleware(['isReceptionist'])->group(function () {
     Route::get('/user/doctors', [UserController::class, 'getDoctors']);
     Route::group(['prefix' => 'appointment'], function () {
         Route::put('/{id}', [AppointmentController::class, 'update']);
+        Route::get('', [AppointmentController::class, 'index']);
     });
 });
 

@@ -76,4 +76,10 @@ abstract class CoreRepository implements ICoreRepository
       throw new DataBaseException('Error updating data');
     }
   }
+
+  public function setWith(array $relationships): CoreRepository
+  {
+    $this->query->with($relationships);
+    return $this;
+  }
 }

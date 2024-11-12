@@ -8,6 +8,7 @@ use Carbon\Carbon;
 class AppointmentDto
 {
   public function __construct(
+    public ?int $id = null,
     public string $name,
     public string $email,
     public string $animalName,
@@ -16,7 +17,8 @@ class AppointmentDto
     public string $prognostic,
     public string $period,
     public Carbon $date,
-    public ?string $userId = null
+    public ?string $userId = null,
+    public ?UserDto $user = null
   ) {}
 
   public function toModel(): Appointment

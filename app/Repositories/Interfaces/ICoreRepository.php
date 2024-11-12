@@ -13,4 +13,5 @@ interface ICoreRepository
   public function getOrThrow(): Collection;
   public function createOrThrow(Model $model): Model;
   public function updateOrThrow(int $id, Model $model): Model;
+  public function setWith(array $relationships): ICoreRepository;
 }
