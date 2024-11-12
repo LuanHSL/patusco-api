@@ -25,8 +25,14 @@ class AppointmentService
     return $this->repository->updateOrThrow($id, $dto->toModel());
   }
 
-  public function getAll(): Collection
+  public function getAll(?int $userId = null): Collection
   {
+    $this->repository->resetQueryBuilder();
+
+    if (!empty($userId)) {
+      $this->repository->setWhereUserId($userId);
+    }
+
     return $this->repository
       ->setWith(['user'])
       ->getOrThrow()

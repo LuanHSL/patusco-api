@@ -73,4 +73,10 @@ class AppointmentController extends Controller
         $this->appointmentService->delete($id);
         return response()->json(['message' => 'Appointment deleted successfully'], 200);
     }
+
+    public function getByUser()
+    {
+        $appointments = $this->appointmentService->getAll(auth()->user()->id);
+        return response()->json($appointments);
+    }
 }

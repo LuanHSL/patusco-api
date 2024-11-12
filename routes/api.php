@@ -20,5 +20,5 @@ Route::middleware(['isReceptionist'])->group(function () {
 });
 
 Route::middleware(['isDoctor'])->group(function () {
-    // TODO implement doctor routes
+    Route::get('/appointment/getByUser', [AppointmentController::class, 'getByUser']);
 });

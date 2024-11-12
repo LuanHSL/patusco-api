@@ -17,4 +17,10 @@ class AppointmentRepository extends CoreRepository implements IAppointmentReposi
     $this->query = $this->query->where('id', $id);
     return $this;
   }
+
+  public function setWhereUserId(int $userId): AppointmentRepository
+  {
+    $this->query = $this->query->where('user_id', $userId);
+    return $this;
+  }
 }
