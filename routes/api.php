@@ -11,6 +11,9 @@ Route::post('/appointment', [AppointmentController::class, 'store']);
 
 Route::middleware(['isReceptionist'])->group(function () {
     Route::get('/user/doctors', [UserController::class, 'getDoctors']);
+    Route::group(['prefix' => 'appointment'], function () {
+        Route::put('/{id}', [AppointmentController::class, 'update']);
+    });
 });
 
 Route::middleware(['isDoctor'])->group(function () {

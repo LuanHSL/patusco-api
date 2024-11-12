@@ -15,4 +15,9 @@ class AppointmentService
   {
     return $this->repository->createOrThrow($dto->toModel());
   }
+
+  public function update(AppointmentDto $dto, int $id)
+  {
+    return $this->repository->updateOrThrow($id, $dto->toModel());
+  }
 }

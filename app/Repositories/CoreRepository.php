@@ -60,4 +60,20 @@ abstract class CoreRepository implements ICoreRepository
       throw new DataBaseException('Error saving data');
     }
   }
+
+  public function updateOrThrow(int $id, Model $model): Model
+  {
+    try {
+      DB::beginTransaction();
+
+      $saved = $this->query->find($id);
+      $saved->update($model->toArray());
+
+      DB::commit();
+      return $saved->refresh();
+    } catch (Exception $e) {
+      DB::rollBack();
+      throw new DataBaseException('Error updating data');
+    }
+  }
 }

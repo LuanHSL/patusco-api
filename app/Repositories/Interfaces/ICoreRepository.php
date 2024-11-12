@@ -12,4 +12,5 @@ interface ICoreRepository
   public function resetQueryBuilder(): ICoreRepository;
   public function getOrThrow(): Collection;
   public function createOrThrow(Model $model): Model;
+  public function updateOrThrow(int $id, Model $model): Model;
 }

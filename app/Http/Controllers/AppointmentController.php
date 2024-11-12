@@ -32,4 +32,23 @@ class AppointmentController extends Controller
 
         return response()->json(['message' => 'Appointment created successfully'], 201);
     }
+
+    public function update(CreateAppointmentRequest $request, int $id)
+    {
+        $appointment = new AppointmentDto(
+            name: $request->name,
+            email: $request->email,
+            animalName: $request->animalName,
+            animalType: $request->animalType,
+            animalAge: $request->animalAge,
+            prognostic: $request->prognostic,
+            period: $request->period,
+            date: new Carbon($request->date),
+            userId: $request->userId  
+        );
+
+        $this->appointmentService->update($appointment, $id);
+
+        return response()->json(['message' => 'Appointment updated successfully'], 200);
+    }
 }
