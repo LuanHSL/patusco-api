@@ -15,6 +15,10 @@ class AppRepositoryProvider extends ServiceProvider
             "App\Repositories\Interfaces\IUserRepository",
             "App\Repositories\UserRepository"
         );
+        $this->app->bind(
+            "App\Repositories\Interfaces\IAppointmentRepository",
+            "App\Repositories\AppointmentRepository"
+        );
     }
 
     /**

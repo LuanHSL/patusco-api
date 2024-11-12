@@ -3,6 +3,7 @@
 namespace App\Repositories\Interfaces;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 interface ICoreRepository
 {
@@ -10,4 +11,5 @@ interface ICoreRepository
   public function init(string $model): void;
   public function resetQueryBuilder(): ICoreRepository;
   public function getOrThrow(): Collection;
+  public function createOrThrow(Model $model): Model;
 }

@@ -7,6 +7,8 @@ use App\Repositories\Interfaces\ICoreRepository;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 abstract class CoreRepository implements ICoreRepository
 {
@@ -40,6 +42,22 @@ abstract class CoreRepository implements ICoreRepository
       return $this->query->get();
     } catch (Exception $exception) {
       throw new DataBaseException('Error getting data');
+    }
+  }
+
+  public function createOrThrow(Model $model): Model
+  {
+    try {
+      DB::beginTransaction();
+
+      $saved = $this->query->create($model->toArray());
+
+      DB::commit();
+      return $saved;
+    } catch (Exception $e) {
+      DB::rollBack();
+      dd($e);
+      throw new DataBaseException('Error saving data');
     }
   }
 }
