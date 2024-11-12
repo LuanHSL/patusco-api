@@ -49,4 +49,16 @@ class AppointmentService
         );
       });
   }
+
+  public function deleteAll(): void
+  {
+    $this->repository->deleteOrThrow();
+  }
+
+  public function delete(int $id): void
+  {
+    $this->repository
+      ->setWhereId($id)
+      ->deleteOrThrow();
+  }
 }

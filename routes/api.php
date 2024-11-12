@@ -14,6 +14,8 @@ Route::middleware(['isReceptionist'])->group(function () {
     Route::group(['prefix' => 'appointment'], function () {
         Route::put('/{id}', [AppointmentController::class, 'update']);
         Route::get('', [AppointmentController::class, 'index']);
+        Route::delete('', [AppointmentController::class, 'deleteAll']);
+        Route::delete('/{id}', [AppointmentController::class, 'destroy']);
     });
 });
 

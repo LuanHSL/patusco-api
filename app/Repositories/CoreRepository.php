@@ -77,6 +77,15 @@ abstract class CoreRepository implements ICoreRepository
     }
   }
 
+  public function deleteOrThrow(): void
+  {
+    try {
+      $this->query->delete();
+    } catch (Exception $exception) {
+      throw new DataBaseException('Error deleting data');
+    }
+  }
+
   public function setWith(array $relationships): CoreRepository
   {
     $this->query->with($relationships);

@@ -11,4 +11,10 @@ class AppointmentRepository extends CoreRepository implements IAppointmentReposi
   {
     parent::__construct(modelClass: Appointment::class);
   }
+
+  public function setWhereId(int $id): AppointmentRepository
+  {
+    $this->query = $this->query->where('id', $id);
+    return $this;
+  }
 }
