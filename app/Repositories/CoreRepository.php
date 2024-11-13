@@ -100,4 +100,13 @@ abstract class CoreRepository implements ICoreRepository
       throw new DataBaseException('Error getting data');
     }
   }
+
+  public function firstOrThrow(): null|Model
+  {
+    try {
+      return $this->query->first();
+    } catch (Exception $exception) {
+      throw new DataBaseException('Error getting data');
+    }
+  }
 }

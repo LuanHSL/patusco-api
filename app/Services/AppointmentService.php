@@ -84,4 +84,29 @@ class AppointmentService
       ->setWhereUserId($userId)
       ->existsOrThrow();
   }
+
+  public function get(int $id): null|AppointmentDto
+  {
+    $appointment = $this->repository
+      ->setWhereId($id)
+      ->firstOrThrow();
+
+    if (empty($appointment)) {
+      return null;
+    }
+
+    return new AppointmentDto(
+      id: $appointment->id,
+      name: $appointment->name,
+      email: $appointment->email,
+      animalName: $appointment->animal_name,
+      animalType: $appointment->animal_type,
+      animalAge: $appointment->animal_age,
+      prognostic: $appointment->prognostic,
+      period: $appointment->period,
+      date: new Carbon($appointment->date),
+      userId:  $appointment->user_id,
+      user: null
+    );
+  }
 }

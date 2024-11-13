@@ -118,4 +118,22 @@ class AppointmentController extends Controller
 
         return response()->json(['message' => 'Appointment updated successfully'], 200);
     }
+
+    public function show(int $id)
+    {
+        $appointment = $this->appointmentService->get($id);
+        return response()->json($appointment);
+    }
+
+    public function showByUser(int $id)
+    {
+        $isAppointmentForUser = $this->appointmentService->isAppointmentForUser($id, auth()->user()->id);
+
+        if (!$isAppointmentForUser) {
+            return response()->json(['message' => 'You do not have permission to view this appointment'], 403);
+        }
+
+        $appointment = $this->appointmentService->get($id);
+        return response()->json($appointment);
+    }
 }
