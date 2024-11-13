@@ -69,12 +69,6 @@ class AppointmentController extends Controller
         return response()->json($appointments);
     }
 
-    public function deleteAll()
-    {
-        $this->appointmentService->deleteAll();
-        return response()->json(['message' => 'All appointments deleted successfully'], 200);
-    }
-
     public function destroy(int $id)
     {
         $this->appointmentService->delete($id);
