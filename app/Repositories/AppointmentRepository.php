@@ -23,4 +23,16 @@ class AppointmentRepository extends CoreRepository implements IAppointmentReposi
     $this->query = $this->query->where('user_id', $userId);
     return $this;
   }
+
+  public function setWhereDate(string $date): AppointmentRepository
+  {
+    $this->query = $this->query->where('date', $date);
+    return $this;
+  }
+
+  public function setWhereAnimalType(string $animalType): AppointmentRepository
+  {
+    $this->query = $this->query->where('animal_type', $animalType);
+    return $this;
+  }
 }

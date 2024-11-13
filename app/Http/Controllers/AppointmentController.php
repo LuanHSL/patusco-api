@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Constants\AnimalTypeConst;
 use App\DTOs\AppointmentDto;
+use App\DTOs\FilterAppointmentDto;
 use App\Http\Requests\CreateAppointmentRequest;
 use App\Services\AppointmentService;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
@@ -56,9 +58,14 @@ class AppointmentController extends Controller
         return response()->json(['message' => 'Appointment updated successfully'], 200);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $appointments = $this->appointmentService->getAll();
+        $filterAppointmentDto = new FilterAppointmentDto($request->animalType, $request->date);
+
+        $appointments = $this->appointmentService->getAll(
+            userId: null,
+            filter: $filterAppointmentDto
+        );
         return response()->json($appointments);
     }
 
@@ -74,9 +81,14 @@ class AppointmentController extends Controller
         return response()->json(['message' => 'Appointment deleted successfully'], 200);
     }
 
-    public function getByUser()
+    public function getByUser(Request $request)
     {
-        $appointments = $this->appointmentService->getAll(auth()->user()->id);
+        $filterAppointmentDto = new FilterAppointmentDto($request->animalType, $request->date);
+
+        $appointments = $this->appointmentService->getAll(
+            userId: auth()->user()->id,
+            filter: $filterAppointmentDto
+        );
         return response()->json($appointments);
     }
 

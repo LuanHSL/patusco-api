@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\DTOs\AppointmentDto;
+use App\DTOs\FilterAppointmentDto;
 use App\DTOs\UserDto;
 use App\Models\Appointment;
 use App\Repositories\Interfaces\IAppointmentRepository;
@@ -25,12 +26,20 @@ class AppointmentService
     return $this->repository->updateOrThrow($id, $dto->toModel());
   }
 
-  public function getAll(?int $userId = null): Collection
+  public function getAll(?int $userId = null, FilterAppointmentDto $filter): Collection
   {
     $this->repository->resetQueryBuilder();
 
     if (!empty($userId)) {
       $this->repository->setWhereUserId($userId);
+    }
+
+    if (!empty($filter->date)) {
+      $this->repository->setWhereDate($filter->date);
+    }
+
+    if (!empty($filter->animalType)) {
+      $this->repository->setWhereAnimalType($filter->animalType);
     }
 
     return $this->repository
