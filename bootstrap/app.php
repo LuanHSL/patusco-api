@@ -13,7 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'isReceptionist' => App\Http\Middleware\IsReceptionist::class,
-            'isDoctor' => App\Http\Middleware\IsDoctor::class
+            'isDoctor' => App\Http\Middleware\IsDoctor::class,
+            'cors' => App\Http\Middleware\Cors::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
