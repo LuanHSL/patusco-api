@@ -109,4 +109,10 @@ abstract class CoreRepository implements ICoreRepository
       throw new DataBaseException('Error getting data');
     }
   }
+
+  public function setOrderBy(string $column, string $direction = 'asc'): CoreRepository
+  {
+    $this->query->orderBy($column, $direction);
+    return $this;
+  }
 }

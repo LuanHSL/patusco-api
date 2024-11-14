@@ -20,7 +20,7 @@ class UserService
       ->setWhereRole(RoleTypeConst::DOCTOR)
       ->getOrThrow()
       ->map(function (User $user) {
-        return new UserDto(id: $user->id, name: $user->name);
+        return new UserDto(id: $user->id, name: $user->name, role: null);
       });
   }
 }

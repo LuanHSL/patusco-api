@@ -13,11 +13,11 @@ class AppointmentDto
     public string $email,
     public string $animalName,
     public string $animalType,
-    public string $animalAge,
+    public int $animalAge,
     public string $prognostic,
     public string $period,
-    public Carbon $date,
-    public ?string $userId = null,
+    public Carbon|string $date,
+    public ?int $userId = null,
     public ?UserDto $user = null
   ) {}
 

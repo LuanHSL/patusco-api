@@ -44,10 +44,11 @@ class AppointmentService
 
     return $this->repository
       ->setWith(['user'])
+      ->setOrderBy('date', 'desc')
       ->getOrThrow()
       ->map(function (Appointment $appointment) {
         $user = !empty($appointment->user)
-          ? new UserDto(id: $appointment->user->id, name: $appointment->user->name)
+          ? new UserDto(id: $appointment->user->id, name: $appointment->user->name, role: null)
           : null;
         return new AppointmentDto(
           id: $appointment->id,
@@ -99,7 +100,7 @@ class AppointmentService
       animalAge: $appointment->animal_age,
       prognostic: $appointment->prognostic,
       period: $appointment->period,
-      date: new Carbon($appointment->date),
+      date: $appointment->date,
       userId:  $appointment->user_id,
       user: null
     );

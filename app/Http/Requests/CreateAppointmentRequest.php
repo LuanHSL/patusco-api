@@ -34,7 +34,7 @@ class CreateAppointmentRequest extends FormRequest
             'prognostic' => 'required',
             'period' => 'required|in:' . implode(',', [PeriodConst::MORNING, PeriodConst::AFTERNOON]),
             'date' => 'required|date',
-            'userId' => 'exists:users,id',
+            'userId' => 'nullable|exists:users,id',
         ];
     }
 }

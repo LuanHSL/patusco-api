@@ -17,4 +17,5 @@ interface ICoreRepository
   public function setWith(array $relationships): ICoreRepository;
   public function existsOrThrow(): bool;
   public function firstOrThrow(): null|Model;
+  public function setOrderBy(string $column, string $direction = 'asc'): ICoreRepository;
 }

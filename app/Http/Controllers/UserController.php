@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DTOs\CredentialDto;
+use App\DTOs\UserDto;
 use App\Http\Requests\LoginRequest;
 use App\Services\AuthService;
 use App\Services\UserService;
@@ -25,7 +26,16 @@ class UserController extends Controller
     
             $token = $this->authService->authenticate($credentials);
 
-            return response()->json(['token' => $token]);
+            $user = auth()->user();
+
+            return response()->json([
+                'user' => new UserDto(
+                    id: $user->id,
+                    name: $user->name,
+                    role: $user->role
+                ),
+                'token' => $token
+            ]);
         } catch (JWTException $jWTException) {
             return response()->json(['error' => $jWTException->getMessage()], $jWTException->getCode());
         }
