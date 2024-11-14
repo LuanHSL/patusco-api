@@ -1,66 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# O Patusco Back End
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![GitHub repo size](https://img.shields.io/github/repo-size/LuanHSL/patusco-api?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/LuanHSL/patusco-api?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/LuanHSL/patusco-api?style=for-the-badge)
 
-## About Laravel
+> Este projeto é uma api para o projeto [Patusco Client](https://github.com/LuanHSL/patusco-client), contém 2 níveis de acesso `receptionist` e `doctor`.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 💻 Pré-requisitos
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [PHP 8.2^](https://www.php.net/downloads)
+- [MySql](https://www.mysql.com/)
+- [Composer](https://getcomposer.org/)
 
-## Learning Laravel
+## 🚀 Instalando Patusco Api
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Para instalar, siga estas etapas:
+```
+git clone https://github.com/LuanHSL/patusco-api.git
+```
+```
+cd patusco-api
+```
+```
+composer install
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Executando Patusco Api
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Para executar, siga estas etapas:
 
-## Laravel Sponsors
+- Duplique o arquivo `.env.example` e renomeie para `.env`
+- Altere os valores da conexão do banco para seu banco local
+- Rode as migrations
+```
+php artisan migrate
+```
+- Rode as seeds
+```
+php artisan db:seed
+```
+- Suba o servidor
+```
+php artisan serve
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Deploy Patusco Api
 
-### Premium Partners
+O projeto esta hospedado nesse [link](https://patusco.luanhdev.com/)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Login no sistema como recepcionista
+```
+email: receptionist@receptionist.com
+password: password
+```
 
-## Contributing
+Login no sistema como doutor
+```
+email: doctor1@receptionist.com
+password: password
+```
+```
+email: doctor2@receptionist.com
+password: password
+```
+```
+email: doctor3@receptionist.com
+password: password
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📫 Contribuindo para Patusco Api
 
-## Code of Conduct
+Para contribuir com Patusco Api, siga estas etapas:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Bifurque este repositório.
+2. Crie um branch: `git checkout -b develop`.
+3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
+4. Envie para o branch original: `git push origin <nome_do_projeto> / <local>`
+5. Crie a solicitação de pull.
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
